@@ -1,0 +1,116 @@
+#calculator
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        .calculator {
+    width: 300px;
+    height: 340px;
+    margin: 75px auto;
+    padding: 15px;
+    border: 19px solid #1c2425;
+    border-radius: 25px;
+    /* box-shadow: 0 0 10px rgba(158, 9, 9, 0.1); */
+}
+
+#result {
+    background-color: rgba(177, 161, 161, 0.144);
+    width: 90%;
+    height: 10%;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 25px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+
+}
+
+button {
+    padding: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 50px;
+    background-color: #55c0bbe1;
+}
+
+button:hover {
+    background-color: #f7f305;
+}
+
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="result" readonly>
+        <div class="buttons">
+            <button onclick="clearResult()">AC</button>
+            <button onclick="appendToResult('/')">/</button>
+            <button onclick="backspace()">DEL</button>
+            <button onclick="appendToResult('%')">%</button>
+            <button onclick="appendToResult('9')">9</button>
+            <button onclick="appendToResult('8')">8</button>
+            <button onclick="appendToResult('7')">7</button>
+            <button onclick="appendToResult('')"></button>
+            <button onclick="appendToResult('4')">4</button>
+            <button onclick="appendToResult('5')">5</button>
+            <button onclick="appendToResult('6')">6</button>
+            <button onclick="appendToResult('-')">-</button>
+            <button onclick="appendToResult('1')">1</button>
+            <button onclick="appendToResult('2')">2</button>
+            <button onclick="appendToResult('3')">3</button>
+            <button onclick="appendToResult('+')">+</button>
+            <button onclick="appendToResult('00')">00</button>
+            <button onclick="appendToResult('0')">0</button>
+            <button onclick="appendToResult('.')">.</button>
+            <button onclick="calculateResult()">=</button>
+            
+            
+        </div>
+    </div>
+
+    <script>
+
+        // let div1=document.getElementsByClassName("div");
+        // document.head.appendChild();
+        // cal.style
+        
+
+
+
+        function appendToResult(value) {
+    document.getElementById('result').value += value;
+}
+
+function clearResult() {
+    document.getElementById('result').value = '';
+}
+
+function calculateResult() {
+    let result = document.getElementById('result').value;
+    try {
+        document.getElementById('result').value = eval(result);
+    } catch (error) {
+        document.getElementById('result').value = 'Error';
+    }
+}
+function backspace() {
+    let currentResult = document.getElementById('result').value;
+    // Remove the last character from the input
+    document.getElementById('result').value = currentResult.slice(0, -1);
+}
+
+
+
+    </script>
+</body>
+</html>
